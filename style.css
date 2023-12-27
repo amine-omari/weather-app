@@ -68,3 +68,11 @@ body {
   font-weight: 400;
   margin-top: -10px;
 }
+
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-top: 50px;
+}
