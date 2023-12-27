@@ -1,7 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "Poppins", "sans-serif";
+  font-family: sans-serif;
   box-sizing: border-box;
 }
 
@@ -47,4 +47,8 @@ body {
   width: 60px;
   height: 60px;
   cursor: pointer;
+}
+
+.search button img {
+    width: 16px;
 }
