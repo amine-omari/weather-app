@@ -4,9 +4,9 @@ const MainContainer = () => {
   const [city, setCity] = useState("");
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState(null);
-  const [weatherImgs, setWeatherImgs] = useState();
+  const [weatherImgs, setWeatherImgs] = useState(null);
 
-  const apiKey = "{api key}";
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
   const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 
@@ -18,22 +18,30 @@ const MainContainer = () => {
       if (response.status === 404) {
         setError("City Not Found");
         setWeatherData(null);
+        setWeatherImgs(null);
       } else {
         const data = await response.json();
         setWeatherData(data);
         setError(null);
 
         setWeatherImgs(() => {
-          if (data.weather[0].main == "Clouds") {
-            return "/images/clouds.png";
-          } else if (data.weather[0].main == "Clear") {
-            return "/images/clear.png";
-          } else if (data.weather[0].main == "Rain") {
-            return "/images/rain.png";
-          } else if (data.weather[0].main == "Drizzle") {
-            return "/images/drizzle.png";
-          } else if (data.weather[0].main == "Mist") {
-            return "/images/mist.png";
+          if (data.weather && data.weather.length > 0) {
+            const weatherMain = data.weather[0].main;
+            if (weatherMain === "Clouds") {
+              return "/images/clouds.png";
+            } else if (weatherMain === "Clear") {
+              return "/images/clear.png";
+            } else if (weatherMain === "Rain") {
+              return "/images/rain.png";
+            } else if (weatherMain === "Drizzle") {
+              return "/images/drizzle.png";
+            } else if (weatherMain === "Mist") {
+              return "/images/mist.png";
+            } else {
+              return null;
+            }
+          } else {
+            return "/images/weatherIcon.png";
           }
         });
       }
@@ -41,6 +49,7 @@ const MainContainer = () => {
       console.error("Error fetching weather data:", error);
       setError("Error fetching weather data");
       setWeatherData(null);
+      setWeatherImgs(null);
     }
   };
 
@@ -73,9 +82,13 @@ const MainContainer = () => {
             />
           </div>
           <h1 className="text-[80px] font-medium">
-            {Math.round(weatherData.main.temp)}
+            {weatherData.main && weatherData.main.temp
+              ? Math.round(weatherData.main.temp)
+              : ""}
           </h1>
-          <h2 className="text-4xl font-normal -mt-2.5">{weatherData.name}</h2>
+          <h2 className="text-4xl font-normal -mt-2.5">
+            {weatherData.name || ""}
+          </h2>
           <div className="flex items-center justify-between px-5 py-0 mt-[50px]">
             <div className="flex items-center text-left">
               <img
@@ -85,7 +98,9 @@ const MainContainer = () => {
               />
               <div>
                 <p className="text-[28px] -mt-1.5">
-                  {weatherData.main.humidity}%
+                  {weatherData.main && weatherData.main.humidity
+                    ? `${weatherData.main.humidity}%`
+                    : ""}
                 </p>
                 <p>Humidity</p>
               </div>
@@ -98,7 +113,9 @@ const MainContainer = () => {
               />
               <div>
                 <p className="text-[28px] -mt-1.5">
-                  {weatherData.wind.speed} Km/h
+                  {weatherData.wind && weatherData.wind.speed
+                    ? `${weatherData.wind.speed} Km/h`
+                    : ""}
                 </p>
                 <p>Wind Speed</p>
               </div>
