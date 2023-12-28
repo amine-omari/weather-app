@@ -6,7 +6,7 @@ const MainContainer = () => {
   const [error, setError] = useState(null);
   const [weatherImgs, setWeatherImgs] = useState();
 
-  const apiKey = "{apikey}";
+  const apiKey = "{api key}";
   const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 
