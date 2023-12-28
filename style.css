@@ -99,9 +99,9 @@ body {
 }
 
 .error {
-  text-align: left;
-  margin-left: 10px;
-  font-size: 14px;
-  margin-top: 10px;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
   display: none;
 }
