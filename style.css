@@ -39,6 +39,7 @@ body {
   margin-right: 16px;
   font-size: 18px;
 }
+
 .search button {
   border: 0px;
   outline: 0px;
@@ -47,6 +48,13 @@ body {
   width: 60px;
   height: 60px;
   cursor: pointer;
+}
+
+.search button:hover {
+  opacity: 95%;
+  scale: 0.95;
+  border: 0.5px solid gray;
+  transition-duration: 0.3s;
 }
 
 .search button img {
