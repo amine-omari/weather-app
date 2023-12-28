@@ -78,7 +78,7 @@ const MainContainer = () => {
             <img
               src={weatherImgs}
               alt="weather icons"
-              className="w-[160px] mt-4"
+              className="w-[160px] mt-4 rounded-full"
             />
           </div>
           <h1 className="text-[80px] font-medium">
