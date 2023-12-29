@@ -55,18 +55,18 @@ const MainContainer = () => {
 
   return (
     <div className="card">
-      <div className="w-full flex text-center justify-center">
+      <div className="w-full flex flex-col space-y-5 sm:space-y-0 sm:flex-row items-center text-center sm:justify-center">
         <input
           type="text"
           placeholder="enter city name"
           spellCheck="false"
-          className="border-none outline-none text-[#555] px-6 h-[60px] rounded-full flex-1 mr-4 text-lg"
+          className="border-none outline-none text-[#555] px-6 h-[60px] rounded-full w-full sm:flex-1 sm:mr-4 text-lg"
           value={city}
           onChange={(e) => setCity(e.target.value)}
         />
         <button
           onClick={() => searchWeather()}
-          className="border-none outline-none bg-white rounded-full w-[60px] h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border-[0.5px] border-gray-500 transition duration-300"
+          className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border-[0.5px] border-gray-500 transition duration-300"
         >
           <img src="images/search.png" alt="search icon" className="w-4" />
         </button>
