@@ -11,10 +11,9 @@ const MainContainer = () => {
   const apiUrl =
     "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 
-  const searchWeather = async (data) => {
+  const searchWeather = async () => {
     try {
       const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
-      console.log(data);
 
       if (response.status === 404) {
         setError("City Not Found");
@@ -22,6 +21,7 @@ const MainContainer = () => {
         setWeatherImgs(null);
       } else {
         const data = await response.json();
+        console.log(data);
         setWeatherData(data);
         setError(null);
 
