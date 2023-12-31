@@ -1,3 +1,4 @@
+import SearchIcon from "@/icons/SearchIcon";
 import React, { useState } from "react";
 
 const MainContainer = () => {
@@ -70,7 +71,7 @@ const MainContainer = () => {
           className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border border-gray-500 transition duration-300"
         >
           {/* TODO: use Heroicons for all icons */}
-          <img src="images/search.png" alt="search icon" className="w-4" />
+          <SearchIcon />
         </button>
       </div>
       {weatherData ? (
