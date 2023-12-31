@@ -53,6 +53,12 @@ const MainContainer = () => {
       setWeatherImgs(null);
     }
   };
+  const handleEnterKey = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      searchWeather();
+    }
+  };
 
   return (
     <div className="w-[90%] max-w-[470px] text-white mt-20 mx-auto rounded-3xl py-10 px-7 text-center bg-gradient-to-br from-teal-400 via-teal-500 to-purple-800">
@@ -65,9 +71,10 @@ const MainContainer = () => {
           className="border-none outline-none text-[#555] px-6 h-[60px] rounded-full w-full sm:flex-1 sm:mr-4 text-lg"
           value={city}
           onChange={(e) => setCity(e.target.value)}
+          onKeyDown={handleEnterKey}
         />
         <button
-          onClick={() => searchWeather()}
+          onClick={searchWeather}
           className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border border-gray-500 transition duration-300"
         >
           {/* TODO: use Heroicons for all icons */}
