@@ -57,7 +57,7 @@ const MainContainer = () => {
   };
 
   return (
-    <div className="card">
+    <div className="w-[90%] max-w-[470px] text-white mt-20 mx-auto rounded-3xl py-10 px-7 text-center bg-gradient-to-br from-teal-400 via-teal-500 to-purple-800">
       <div className="w-full flex flex-col space-y-5 sm:space-y-0 sm:flex-row items-center text-center sm:justify-center">
         {/* TODO: never write something you don't understand */}
         <input
@@ -72,7 +72,7 @@ const MainContainer = () => {
           onClick={() => searchWeather()}
           className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border-[0.5px] border-gray-500 transition duration-300"
         >
-      {/* TODO: use Heroicons for all icons */}
+          {/* TODO: use Heroicons for all icons */}
           <img src="images/search.png" alt="search icon" className="w-4" />
         </button>
       </div>
@@ -86,7 +86,7 @@ const MainContainer = () => {
               className="w-[160px] mt-4 rounded-full"
             />
           </div>
-        {/*TODO: no need for h-[80px] */}
+          {/*TODO: no need for h-[80px] */}
           <h1 className="text-[80px] font-medium">
             {weatherData.main && weatherData.main.temp
               ? Math.round(weatherData.main.temp)
@@ -130,8 +130,8 @@ const MainContainer = () => {
           </div>
         </div>
       ) : (
-      // No need to check for error
-      // TODO: re compose this component! Logic no making sense
+        // No need to check for error
+        // TODO: re compose this component! Logic no making sense
         <div
           className={
             error ? `h-[300px] flex justify-center items-center text-4xl` : null
