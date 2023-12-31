@@ -28,6 +28,8 @@ const MainContainer = () => {
           // data.weather?.length>0 is equal to data.weather && data.weather.length > 0
           if (data.weather && data.weather.length > 0) {
             const weatherMain = data.weather[0].main;
+
+            // TODO: use swith case
             if (weatherMain === "Clouds") {
               return "/images/clouds.png";
             } else if (weatherMain === "Clear") {
@@ -57,6 +59,7 @@ const MainContainer = () => {
   return (
     <div className="card">
       <div className="w-full flex flex-col space-y-5 sm:space-y-0 sm:flex-row items-center text-center sm:justify-center">
+        {/* TODO: never write something you don't understand */}
         <input
           type="text"
           placeholder="enter city name"
@@ -69,6 +72,7 @@ const MainContainer = () => {
           onClick={() => searchWeather()}
           className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border-[0.5px] border-gray-500 transition duration-300"
         >
+      {/* TODO: use Heroicons for all icons */}
           <img src="images/search.png" alt="search icon" className="w-4" />
         </button>
       </div>
@@ -82,11 +86,13 @@ const MainContainer = () => {
               className="w-[160px] mt-4 rounded-full"
             />
           </div>
+        {/*TODO: no need for h-[80px] */}
           <h1 className="text-[80px] font-medium">
             {weatherData.main && weatherData.main.temp
               ? Math.round(weatherData.main.temp)
               : ""}
           </h1>
+          {/*  TODO: no need for negative margin  */}
           <h2 className="text-4xl font-normal -mt-2.5">
             {weatherData.name || ""}
           </h2>
@@ -124,6 +130,8 @@ const MainContainer = () => {
           </div>
         </div>
       ) : (
+      // No need to check for error
+      // TODO: re compose this component! Logic no making sense
         <div
           className={
             error ? `h-[300px] flex justify-center items-center text-4xl` : null
