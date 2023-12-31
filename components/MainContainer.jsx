@@ -25,6 +25,7 @@ const MainContainer = () => {
         setError(null);
 
         setWeatherImgs(() => {
+          // data.weather?.length>0 is equal to data.weather && data.weather.length > 0
           if (data.weather && data.weather.length > 0) {
             const weatherMain = data.weather[0].main;
             if (weatherMain === "Clouds") {
