@@ -70,7 +70,7 @@ const MainContainer = () => {
         />
         <button
           onClick={() => searchWeather()}
-          className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border-[0.5px] border-gray-500 transition duration-300"
+          className="border-none outline-none bg-white rounded-full w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] cursor-pointer flex justify-center items-center hover:opacity-95 hover:scale-95 border border-gray-500 transition duration-300"
         >
           {/* TODO: use Heroicons for all icons */}
           <img src="images/search.png" alt="search icon" className="w-4" />
@@ -78,33 +78,33 @@ const MainContainer = () => {
       </div>
       {weatherData ? (
         // Display weather data
-        <div>
-          <div className="flex justify-center">
-            <img
-              src={weatherImgs}
-              alt="weather icons"
-              className="w-[160px] mt-4 rounded-full"
-            />
+        <div className="space-y-8">
+          <div>
+            <div className="flex justify-center">
+              <img
+                src={weatherImgs}
+                alt="weather icons"
+                className="w-[160px] mt-4 rounded-full"
+              />
+            </div>
+            {/*TODO: no need for h-[80px] */}
+            <h1 className="text-7xl font-medium">
+              {weatherData.main && weatherData.main.temp
+                ? Math.round(weatherData.main.temp)
+                : ""}
+            </h1>
+            {/*  TODO: no need for negative margin  */}
+            <h2 className="text-4xl font-normal">{weatherData.name || ""}</h2>
           </div>
-          {/*TODO: no need for h-[80px] */}
-          <h1 className="text-[80px] font-medium">
-            {weatherData.main && weatherData.main.temp
-              ? Math.round(weatherData.main.temp)
-              : ""}
-          </h1>
-          {/*  TODO: no need for negative margin  */}
-          <h2 className="text-4xl font-normal -mt-2.5">
-            {weatherData.name || ""}
-          </h2>
-          <div className="flex items-center justify-between px-5 py-0 mt-[50px]">
-            <div className="flex items-center text-left">
+          <div className="flex items-center justify-between px-5">
+            <div className="flex items-center text-left space-x-2">
               <img
                 src="/images/humidity.png"
                 alt="humidity icon"
-                className="w-10 mr-2.5"
+                className="w-10"
               />
               <div>
-                <p className="text-[28px] -mt-1.5">
+                <p className="text-xl">
                   {weatherData.main && weatherData.main.humidity
                     ? `${weatherData.main.humidity}%`
                     : ""}
@@ -112,14 +112,14 @@ const MainContainer = () => {
                 <p>Humidity</p>
               </div>
             </div>
-            <div className="flex items-center text-left">
+            <div className="flex items-center text-left space-x-2">
               <img
                 src="/images/wind.png"
                 alt="humidity icon"
-                className="w-10 mr-2.5"
+                className="w-10"
               />
               <div>
-                <p className="text-[28px] -mt-1.5">
+                <p className="text-xl">
                   {weatherData.wind && weatherData.wind.speed
                     ? `${weatherData.wind.speed} Km/h`
                     : ""}
@@ -134,7 +134,9 @@ const MainContainer = () => {
         // TODO: re compose this component! Logic no making sense
         <div
           className={
-            error ? `h-[300px] flex justify-center items-center text-4xl` : null
+            error
+              ? `h-[300px] flex justify-center items-center text-4xl`
+              : "h-0"
           }
         >
           <p>{error}</p>
