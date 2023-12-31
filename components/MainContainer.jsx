@@ -26,22 +26,19 @@ const MainContainer = () => {
 
         setWeatherImgs(() => {
           // data.weather?.length>0 is equal to data.weather && data.weather.length > 0
-          if (data.weather && data.weather.length > 0) {
+          if (data.weather?.length > 0) {
             const weatherMain = data.weather[0].main;
-
-            // TODO: use swith case
-            if (weatherMain === "Clouds") {
-              return "/images/clouds.png";
-            } else if (weatherMain === "Clear") {
-              return "/images/clear.png";
-            } else if (weatherMain === "Rain") {
-              return "/images/rain.png";
-            } else if (weatherMain === "Drizzle") {
-              return "/images/drizzle.png";
-            } else if (weatherMain === "Mist") {
-              return "/images/mist.png";
-            } else {
-              return null;
+            switch (weatherMain) {
+              case "Clouds":
+                return "/images/clouds.png";
+              case "Clear":
+                return "/images/clear.png";
+              case "Rain":
+                return "/images/rain.png";
+              case "Drizzle":
+                return "/images/drizzle.png";
+              case "Mist":
+                return "/images/mist.png";
             }
           } else {
             return "/images/weatherIcon.png";
